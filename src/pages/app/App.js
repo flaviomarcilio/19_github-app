@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Home } from "..";
 import { getUser, getUserRepos, getUserStarred } from "../../services";
 
 
@@ -104,7 +105,7 @@ export const App = () => {
                         )}
                     </>
                 ) : (
-                    <h1>Home</h1>
+                    <Home />
                 )}
             </section>
         </main>
