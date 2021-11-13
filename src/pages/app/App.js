@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Home } from "..";
+import { Header } from "../../components";
 import { getUser, getUserRepos, getUserStarred } from "../../services";
 
 
@@ -25,24 +26,27 @@ export const App = () => {
         starred: []
     });
 
-    const handleUsername = (ev) => {
-        setGitHubState(prevState => ({
-            ...prevState,
-            user: {
-                name: ev.target.value
-            }
-        }));
-    };
+    const [username, setUsername] = useState('');
+
+    // const handleUsername = (ev) => {
+    //     setGitHubState(prevState => ({
+    //         ...prevState,
+    //         user: {
+    //             name: ev.target.value
+    //         }
+    //     }));
+    // };
 
     const submitGetUser = () => {
-        if(!gitHubState.user.name) return;
+        // if(!gitHubState.user.name) return;
+        if(!username) return;
 
         setGitHubState((prevState) => ({
             ...prevState,
             loading: !prevState.loading
         }));
 
-        getUser(gitHubState.user.name).then(response => {
+        getUser(username).then(response => {
             setGitHubState(prevState => ({
                 ...prevState,
                 hasUser: true,
@@ -68,14 +72,14 @@ export const App = () => {
             }))
         });
 
-        getUserRepos(gitHubState.user.name).then(response => {
+        getUserRepos(username).then(response => {
             setGitHubState(prevState => ({
                 ...prevState,
                 repositories: response
             }))
         });
 
-        getUserStarred(gitHubState.user.name).then(response => {
+        getUserStarred(username).then(response => {
             setGitHubState(prevState => ({
                 ...prevState,
                 starred: response
@@ -87,12 +91,7 @@ export const App = () => {
     return (
         <main> 
             <section>
-                <header>
-                    <div>
-                        <input type='text' placeholder='Your username' onChange={handleUsername} />
-                        <button type='submit' onClick={submitGetUser}>Show my work</button>
-                    </div>
-                </header>
+                <Header onClick={submitGetUser} onChange={setUsername} />
                 {gitHubState.hasUser ? (
                     <>
                         {gitHubState.loading ? (

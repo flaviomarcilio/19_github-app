@@ -11,7 +11,7 @@ export const Home = () => {
 }
 
 const Content = styled.div`
-    height: 100vh;
+    height: 90vh;
     padding: 0 50px;
     display: flex;
     justify-content: center;
