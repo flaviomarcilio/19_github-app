@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Home } from "..";
-import { Header } from "../../components";
+import { Header, UserProfile } from "../../components";
 import { getUser, getUserRepos, getUserStarred } from "../../services";
 
 
@@ -98,7 +98,7 @@ export const App = () => {
                             <p>Loading...</p>
                             ) : (
                             <>
-                                <h1>UserProfile</h1>
+                                <UserProfile user={gitHubState.user} />
                                 <h3>Repositories</h3>
                             </>
                         )}
