@@ -28,17 +28,7 @@ export const App = () => {
 
     const [username, setUsername] = useState('');
 
-    // const handleUsername = (ev) => {
-    //     setGitHubState(prevState => ({
-    //         ...prevState,
-    //         user: {
-    //             name: ev.target.value
-    //         }
-    //     }));
-    // };
-
     const submitGetUser = () => {
-        // if(!gitHubState.user.name) return;
         if(!username) return;
 
         setGitHubState((prevState) => ({

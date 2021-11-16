@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const gitHubApi = axios.create({
-    baseURL: 'https://api.github.com/'
+    baseURL: process.env.REACT_APP_GITHUBAPI
 });
 
 export const getUser = async (username) => {
